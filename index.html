@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="logo" class="logo" />
+        <p>Shopcart</p>
+      </div>
+      <div class="cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <div class="product-count"></div>
+        <p>Cart</p>
+      </div>
+    </nav>
+
+    <header>
+      <div class="header-left">
+        <h2>Grab Upto 50% Off On Selected Headphones</h2>
+        <button class="header-btn">Buy Now</button>
+      </div>
+      <div class="header-right">
+        <img src="assets/hero-img6.png" alt="hero-img" class="hero-img" />
+      </div>
+    </header>
+
+    <div>
+      <p class="main-heading">Headphones For You!</p>
+
+      <div class="product-container">
+        <!-- <div class="product">
+          <div class="product-img-container">
+            <img
+              src="assets/hero-img4.png"
+              alt="product1"
+              class="product-img"
+            />
+          </div>
+          <div class="product-details">
+            <div class="product-info">
+              <h3 class="product-name">Product 1</h3>
+              <p class="product-price">$199.99</p>
+            </div>
+            <p class="product-subtitle">
+              Lorem, ipsum dolor sit amet consectetur adipisicing Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Repellendus
+              voluptatibus maxime unde tempora sit libero atque delectus dolor
+              illo neque?.
+            </p>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- Cart Modal -->
+      <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-content">
+          <span class="close-modal" id="close-modal">&times;</span>
+          <h2>Your Cart</h2>
+          <div class="cart-items-container" id="cart-items-container">
+            <!-- <div class="cart-item">
+              <div class="id-img">
+                <p>1</p>
+                <div class="cart-item-img-container">
+                  <img
+                    src="assets/hero-img3.jpg"
+                    alt=""
+                    class="cart-item-img"
+                  />
+                </div>
+              </div>
+              <p>product1</p>
+              <p>999</p>
+              <p>4</p>
+              <div class="cart-item-btns">
+                <button class="decrement">-</button>
+                <button class="increment">+</button>
+                <button class="delete">&times;</button>
+              </div>
+            </div> -->
+          </div>
+          <div class="cart-summary-container">
+            <div class="cart-summary">
+              <p class="price">Total: $<span id="total-price">0.00</span></p>
+              <button class="checkout-btn">Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
