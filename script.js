@@ -57,6 +57,12 @@ const closeModal = document.querySelector(".close-modal");
 const cartItemsContainer = document.querySelector(".cart-items-container");
 const totalPriceElement = document.getElementById("total-price");
 const checkoutButton = document.querySelector(".checkout-btn");
+const diccountInput = document.querySelector(".discount-input");
+const diccountBtn = document.querySelector(".discount-btn");
+const discountAmount = document.querySelector(".discount");
+const subtotal = document.querySelector(".subtotal");
+let discountApplied = true;
+let discountTxt;
 
 // Open the cart modal
 document.querySelector(".cart").addEventListener("click", () => {
@@ -129,9 +135,49 @@ function renderCartItems() {
     // Add event listeners to increment/decrement buttons
     itemElement.querySelector(".increment").addEventListener("click", () => {
       updateItemQuantity(item.id, 1);
+      if (discountTxt) {
+        const discountText1 = "ostad10";
+        const discountText2 = "ostad5";
+
+        if (discountTxt === discountText1) {
+          const totalPrice = parseFloat(totalPriceElement.textContent);
+          const discountPrice = totalPrice - totalPrice * 0.1;
+          totalPriceElement.textContent = discountPrice.toFixed(2);
+          discountTxt = discountText1;
+          discountAmount.textContent = parseFloat(totalPrice - discountPrice);
+          // diccountInput.value = "";
+        } else if (discountTxt === discountText2) {
+          const totalPrice = parseFloat(totalPriceElement.textContent);
+          const discountPrice = totalPrice - totalPrice * 0.05;
+          totalPriceElement.textContent = discountPrice.toFixed(2);
+          // diccountInput.value = "";
+          discountTxt = discountText2;
+          discountAmount.textContent = parseFloat(totalPrice - discountPrice);
+        }
+      }
     });
     itemElement.querySelector(".decrement").addEventListener("click", () => {
       updateItemQuantity(item.id, -1);
+      if (discountTxt) {
+        const discountText1 = "ostad10";
+        const discountText2 = "ostad5";
+
+        if (discountTxt === discountText1) {
+          const totalPrice = parseFloat(totalPriceElement.textContent);
+          const discountPrice = totalPrice - totalPrice * 0.1;
+          totalPriceElement.textContent = discountPrice.toFixed(2);
+          subtotal.textContent = parseFloat(totalPrice + discountAmount);
+          discountTxt = discountText1;
+          // diccountInput.value = "";
+        } else if (discountTxt === discountText2) {
+          const totalPrice = parseFloat(totalPriceElement.textContent);
+          const discountPrice = totalPrice - totalPrice * 0.05;
+          totalPriceElement.textContent = discountPrice.toFixed(2);
+          // diccountInput.value = "";
+          discountTxt = discountText2;
+          subtotal.textContent = parseFloat(totalPrice + discountAmount);
+        }
+      }
     });
     itemElement.querySelector(".delete").addEventListener("click", () => {
       removeItemFromCart(item.id);
@@ -202,4 +248,43 @@ checkoutButton.addEventListener("click", () => {
   updateCartCount();
   renderCartItems();
   cartModal.style.display = "none"; // Close modal
+});
+
+const calculateDiscount = () => {
+  const discountText1 = "ostad10";
+  const discountText2 = "ostad5";
+  const discountInputValue = diccountInput.value.toLowerCase();
+
+  if (discountApplied) {
+    if (discountInputValue === discountText1) {
+      const totalPrice = parseFloat(totalPriceElement.textContent);
+      const discountPrice = totalPrice - totalPrice * 0.1;
+      totalPriceElement.textContent = discountPrice.toFixed(2);
+      alert("You have received a 10% discount!");
+      discountTxt = discountText1;
+      diccountInput.value = "";
+      discountApplied = false;
+      discountAmount.textContent = parseFloat(totalPrice - discountPrice);
+      subtotal.textContent = parseFloat(totalPrice + discountAmount);
+    } else if (discountInputValue === discountText2) {
+      const totalPrice = parseFloat(totalPriceElement.textContent);
+      const discountPrice = totalPrice - totalPrice * 0.05;
+      totalPriceElement.textContent = discountPrice.toFixed(2);
+      alert("You have received a 5% discount!");
+      diccountInput.value = "";
+      discountTxt = discountText2;
+      discountApplied = false;
+      discountAmount.textContent = parseFloat(totalPrice - discountPrice);
+      subtotal.textContent = parseFloat(totalPrice + discountAmount);
+    } else {
+      alert("Invalid discount code");
+    }
+  } else {
+    alert("You have already applied a discount code");
+    diccountInput.value = "";
+  }
+};
+
+diccountBtn.addEventListener("click", () => {
+  calculateDiscount();
 });
